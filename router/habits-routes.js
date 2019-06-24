@@ -1,43 +1,95 @@
-const db = require('../data/dbConfig.js');
+const express = require('express');
 
-module.exports = {
-  add,
-  find,
-  findBy,
-  findById,
-  remove,
-  update
-};
+const { authenticate } = require('../auth/authenticate')
+const {
+  validateHabitId,
+  validateHabitChanges,
+  validateHabitPost } = require('../middleware/category-middleware.js')
 
-function find() {
-  return db('habits')
-  .select('*');
-}
+const Habits = require('../models/habit-models.js')
 
-function findById(id) {
-  return db('habits')
-    .where({ id })
-    .first();
-}
+const router = express.Router();
 
-function findBy(filter) {
-  return db('habits').where(filter);
-}
+router.get('/', authenticate, (req, res) => {
 
-async function add(habit) {
-  const [id] = await db('habits').insert(habit);
+  Habits.findHabits()
+    .then(habits => {
+      res.status(200).json(habits)
+    })
+    .catch(err => {
+      res.status(500).json({message: "Error finding Habits"})
+    })
+})
 
-  return findById(id);
-}
+// router.get('/habits/:id', authenticate, validateCategoryId, (req, res) => {
+//   const { categoryId } = req
+//
+//   Categories.findCategoryById(categoryId)
+//     .then(category => {
+//       Categories.findCategoryByHabit(categoryId)
+//       .then(habits => {
+//           const categoryObj = {
+//             ...category,
+//             habits: habits
+//           }
+//           res.status(200).json(catergoryObj)
+//       })
+//       .catch(err => {
+//         res.status(500).json({message: `Error Finding Habits`})
+//       })
+//     })
+//     .catch(err => {
+//       res.status(500).json({message: "Error finding Category"})
+//     })
+// })
+//
+// router.get('/:id', authenticate, validateCategoryId, (req, res) => {
+//   const { categoryId } = req
+//
+//   Categories.findCategoryById(categoryId)
+//     .then(category => {
+//       res.status(200).json(category)
+//     })
+//     .catch(err => {
+//       res.status(500).json({message: "Error finding Category"})
+//     })
+// })
+//
+// router.post('/', (req, res) => {
+//   Categories.addCategory(req.post)
+//   .then(category => {
+//     res.status(201).json(category)
+//   })
+//   .catch(err => {
+//     res.status(500).json({message: "Error could not post category"})
+//   })
+// })
+//
+// router.put('/:id', authenticate, validateCategoryId, validateCategoryChanges, (req, res) => {
+//   const { categoryId, changes } = req
+//
+//   Categories.updateCategory(categoryId, changes)
+//     .then(updated => {
+//       res.status(201).json({
+//         message: "Category has successfully updated",
+//         category: changes
+//       })
+//     })
+//     .catch(err => {
+//       res.status(500).json({message: "Error updating Category"})
+//     })
+// })
+//
+// router.delete('/:id', authenticate, validateCategoryId, (req, res) => {
+//   const { categoryId } = req
+//
+//   Categories.removeCategory(categoryId)
+//     .then(category => {
+//       res.status(200).json({message: `The category was successfully deleted`})
+//     })
+//     .catch(err => {
+//       res.status(500).json({message: "Error deleting Category"})
+//     })
+// })
 
-function update(id, changes) {
-  return db('habits')
-  .where({ id })
-  .update(changes, '*');
-}
-
-function remove(id) {
-  return db('habits')
-  .where({ id })
-  .del();
-}
+module.exports = router

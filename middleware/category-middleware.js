@@ -2,7 +2,8 @@ const Categories = require('../models/category-models.js')
 
 module.exports = {
   validateCategoryId,
-  validateCategoryChanges
+  validateCategoryChanges,
+  validateCategoryPost
 };
 
 //custom middleware
