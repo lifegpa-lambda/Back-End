@@ -4,29 +4,23 @@ const bcrypt = require('bcryptjs')
 
 const { authenticate } = require('./authenticate')
 const { generateToken } = require('./token')
+const { validateUserInputs } = require('../middleware/register-middleware.js')
+const { validateLoginCreds } = require('../middleware/login-middleware.js')
 const Users = require('../models/user-models.js')
 
 
 const router = express.Router();
 
-router.post('/register', (req, res) => {
-  let user = req.body;
+router.post('/register', validateUserInputs, (req, res) => {
+  let user = req.user;
   const hash = bcrypt.hashSync(user.password, 10);
   user.password = hash;
-
-  if(!user.userImgUrl) {
-    user.userImgUrl = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
-  }
-
-  if(!user.username || !user.password || !user.fullname || !user.email) {
-    return res.status(412).json({message: 'One or more inputs missing... username, password, fullname, email'})
-  }
 
   Users.addUser(user)
     .then(user => {
       res.status(201).json({
         id: user.id,
-        message: 'User registration Successful'
+        message: `${user.username}'s registration Successful`
       });
     })
     .catch(error => {
@@ -34,7 +28,7 @@ router.post('/register', (req, res) => {
     });
 })
 
-router.post('/login', (req, res) => {
+router.post('/login', validateLoginCreds, (req, res) => {
   let { username, password } = req.body;
 
   Users.findByUserCreds({ username })
@@ -53,7 +47,7 @@ router.post('/login', (req, res) => {
       }
     })
     .catch(error => {
-      res.status(500).json(error);
+      res.status(500).json({message: "Error Loging in User"});
     });
 })
 
