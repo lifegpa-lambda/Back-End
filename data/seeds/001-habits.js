@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
           userId: 1,
           completed: false,
           completionPoints: 0,
-          createdAt: '2019-01-19 03:14:07'
+          createdAt: knex.fn.now()
         },
         {
           habitTitle: 'Sleep',
@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
           userId: 2,
           completed: false,
           completionPoints: 0,
-          createdAt: '2019-01-19 03:14:07'
+          createdAt: knex.fn.now()
         },
         {
           habitTitle: 'Health',
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
           userId: 3,
           completed: false,
           completionPoints: 0,
-          createdAt: '2019-01-19 03:14:07'
+          createdAt: knex.fn.now()
         }
       ]);
     });

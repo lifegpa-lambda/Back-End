@@ -4,12 +4,12 @@ const bcrypt = require('bcryptjs')
 
 const { authenticate } = require('./authenticate')
 const { generateToken } = require('./token')
-const Users = require('../models/user-model.js')
+const Users = require('../models/user-models.js')
 
 
 const router = express.Router();
 
-router.post('/api/register', (req, res) {
+router.post('/register', (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 10);
   user.password = hash;
@@ -32,9 +32,9 @@ router.post('/api/register', (req, res) {
     .catch(error => {
       res.status(500).json({message: 'Error registering User.'});
     });
-}
+})
 
-router.post('/api/login', (req, res) {
+router.post('/login', (req, res) => {
   let { username, password } = req.body;
 
   Users.findByUserCreds({ username })
@@ -55,4 +55,6 @@ router.post('/api/login', (req, res) {
     .catch(error => {
       res.status(500).json(error);
     });
-}
+})
+
+module.exports = router
