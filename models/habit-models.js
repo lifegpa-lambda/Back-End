@@ -1,13 +1,19 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
+  findHabits,
   findHabitById,
   findHabitByUser,
+  findHabitByCategory,
   addHabit,
   updateHabit,
   removeHabit,
   removeAllHabitsByUser
 };
+
+function findHabits() {
+  return db('habits')
+}
 
 function findHabitById(id) {
   return db('habits')
@@ -18,6 +24,12 @@ function findHabitById(id) {
 function findHabitByUser(id) {
   return db('habits')
     .where({ userId: id })
+    .first();
+}
+
+function findHabitByCategory(id) {
+  return db('habits')
+    .where({ categoryId: id })
     .first();
 }
 

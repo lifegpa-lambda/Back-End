@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
         {
           categoryTitle: 'Health',
           color: 'green',
-          userId: 3
+          userId: 1
         }
       ]);
     });
