@@ -2,7 +2,6 @@ const express = require('express');
 
 const bcrypt = require('bcryptjs')
 
-const { authenticate } = require('./authenticate')
 const { generateToken } = require('./token')
 const { validateUserInputs } = require('../middleware/register-middleware.js')
 const { validateLoginCreds } = require('../middleware/login-middleware.js')
