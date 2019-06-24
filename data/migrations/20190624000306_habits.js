@@ -17,7 +17,7 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('category');
+      .inTable('categories');
 
     tbl.timestamp('createdAt').defaultTo(knex.fn.now());
   });
