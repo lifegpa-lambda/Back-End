@@ -1,42 +1,46 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-  add,
-  find,
-  findBy,
-  findById,
-  remove,
-  update
+  findHabitById,
+  findHabitByUser,
+  addHabit,
+  updateHabit,
+  removeHabit,
+  removeAllHabitsByUser
 };
 
-function find() {
-  return db('habits').select('id', 'name');
-}
-
-function findById(id) {
+function findHabitById(id) {
   return db('habits')
     .where({ id })
     .first();
 }
 
-function findBy(filter) {
-  return db('habits').where(filter);
+function findHabitByUser(id) {
+  return db('habits')
+    .where({ userId: id })
+    .first();
 }
 
-async function add(team) {
+async function addHabit(team) {
   const [id] = await db('habits').insert(team);
 
-  return findById(id);
+  return findHabitById(id);
 }
 
-function update(id, changes) {
+function updateHabit(id, changes) {
   return db('habits')
   .where({ id })
   .update(changes, '*');
 }
 
-function remove(id) {
+function removeHabit(id) {
   return db('habits')
   .where({ id })
+  .del();
+}
+
+function removeAllHabitsByUser(id) {
+  return db('habits')
+  .where({ userId: id })
   .del();
 }
