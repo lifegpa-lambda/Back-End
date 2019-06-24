@@ -31,7 +31,7 @@ function validateUserChanges(req, res, next) {
   const { username, fullname, email, userImgUrl, password } = req.body
 
     if(Object.keys(req.body).length) {
-      if(username, fullname, email, userImgUrl, password) {
+      if(username && fullname && email && userImgUrl && password) {
 
         Users.findByUserCreds({ username })
           .first()

@@ -2,6 +2,7 @@ const db = require('../data/dbConfig.js');
 
 module.exports = {
   addCategory,
+  findCategories,
   findCategoryById,
   findCategoryByUser,
   findCategoryByHabit,
@@ -9,6 +10,10 @@ module.exports = {
   removeCategory,
   removeAllCategoriesByUser
 };
+
+function findCategories(id) {
+  return db('categories')
+}
 
 function findCategoryById(id) {
   return db('categories')
