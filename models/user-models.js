@@ -24,7 +24,7 @@ function findByUserCreds(filter) {
 }
 
 async function addUser(user) {
-  const [id] = await db('users').insert(user);
+  const [id] = await db('users').insert(user).returning('id');
 
   return findUserById(id);
 }

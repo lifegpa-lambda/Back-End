@@ -32,7 +32,7 @@ function findCategoryByHabit(id) {
 }
 
 async function addCategory(category) {
-  const [id] = await db('categories').insert(category);
+  const [id] = await db('categories').insert(category).returning('id');
 
   return findCategoryById(id);
 }
