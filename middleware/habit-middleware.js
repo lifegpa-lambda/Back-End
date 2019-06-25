@@ -1,5 +1,3 @@
-const knex = require('knex');
-
 const Habits = require('../models/habit-models.js')
 
 module.exports = {
