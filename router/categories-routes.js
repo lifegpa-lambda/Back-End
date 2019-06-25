@@ -55,13 +55,13 @@ router.get('/:id', authenticate, validateCategoryId, (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', authenticate, validateCategoryPost, (req, res) => {
   Categories.addCategory(req.post)
   .then(category => {
     res.status(201).json(category)
   })
   .catch(err => {
-    res.status(500).json({message: "Error could not post category"})
+    res.status(500).json({message: "Error could not post category", error: err.message})
   })
 })
 
