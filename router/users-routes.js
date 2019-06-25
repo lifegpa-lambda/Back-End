@@ -59,7 +59,8 @@ router.get('/habits/:id', authenticate, validateUserId, (req, res) => {
 
   Users.findUserById(userId)
     .then(user => {
-      Habits.findHabitsByUser(userId)
+      console.log(user)
+      Habits.findHabitByUser(userId)
         .then(habits => {
           const userObj = {
             ...user,
@@ -76,37 +77,6 @@ router.get('/habits/:id', authenticate, validateUserId, (req, res) => {
     })
 })
 
-// router.get('/categories/habits/:id', authenticate, validateUserId, (req, res) => {
-//   const { userId } = req
-//
-//   Users.findUserById(userId)
-//     .then(user => {
-//       Categories.findCategoryByUser(userId)
-//         .then(categories => {
-//           const category = categories.map(category => {
-//             Habits.findHabitByCategory(category.id)
-//             .then(habits => {
-//               const categoryObj = {
-//                   ...category,
-//                   habits: habits
-//                 }
-//               const userObj = {
-//                 ...user,
-//                 categories: categoryObj
-//               }
-//             })
-//           })
-//           res.status(200).json(userObj)
-//         })
-//         .catch(err => {
-//           res.status(500).json({message: "Error finding Categories for user"})
-//         })
-//     })
-//     .catch(err => {
-//       res.status(500).json({message: "Error finding User"})
-//     })
-// })
-
 router.put('/:id', authenticate, validateUserId, validateUserChanges, (req, res) => {
   const { userId, changes } = req
 
@@ -114,7 +84,10 @@ router.put('/:id', authenticate, validateUserId, validateUserChanges, (req, res)
     .then(updated => {
       res.status(201).json({
         message: "Your account has successfully updated",
-        user: changes
+        user: {
+          ...changes,
+          id: userId
+        }
       })
     })
     .catch(err => {

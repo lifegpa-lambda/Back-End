@@ -11,7 +11,6 @@ module.exports = {
 
 function validateUserId(req, res, next) {
   const { id } = req.params
-
     Users.findUserById(id)
     .then(user => {
       if(user) {
@@ -22,7 +21,7 @@ function validateUserId(req, res, next) {
       }
     })
     .catch(err => {
-      res.status(500).json({message: "Error finding User"})
+      res.status(500).json({message: "Error finding Users"})
     })
 
 };

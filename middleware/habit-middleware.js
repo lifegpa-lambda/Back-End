@@ -30,7 +30,7 @@ function validateHabitChanges(req, res, next) {
   const { habitTitle, completed, completionPoints, userId, categoryId } = req.body
 
     if(Object.keys(req.body).length) {
-      if(habitTitle && userId && categoryId) {
+      if(habitTitle && categoryId) {
         req.changes = {
           ...req.body
         }
