@@ -357,15 +357,15 @@ _http method_: **[POST]**
 
 #### Body
 
-| name               | type    | required | description                                         |
-| ------------------ | ------- | -------- | --------------------------------------------------- |
-| `habitTitle`       | String  | Yes      |                                                     |
-| `categoryId`       | Integer | Yes      |                                                     |
-| `userId`           | Integer | Yes      | No need to assign! Derived from user making request |
-| `completed`        | Boolean | No       |                                                     |
-| `completionPoints` | Integer | No       |                                                     |
-| `createdAt`        | String  | No       |                                                     |
-| `history`          | String  | No       |                                                     |
+| name               | type      | required | description                                         |
+| ------------------ | --------- | -------- | --------------------------------------------------- |
+| `habitTitle`       | String    | Yes      |                                                     |
+| `categoryId`       | Integer   | Yes      |                                                     |
+| `userId`           | Integer   | Yes      | No need to assign! Derived from user making request |
+| `completed`        | Boolean   | No       |                                                     |
+| `completionPoints` | Integer   | No       |                                                     |
+| `createdAt`        | TimeStamp | No       |                                                     |
+| `history`          | String    | No       |                                                     |
 
 #### Example
 
@@ -697,7 +697,8 @@ _http method_: **[GET]**
             "completionPoints": 0,
             "userId": 1,
             "categoryId": 1,
-            "createdAt": "2019-06-24 21:53:29"
+            "createdAt": "2019-06-24 21:53:29",
+            "history": "x xxx"
         },
         {
             "id": 2,
@@ -706,7 +707,8 @@ _http method_: **[GET]**
             "completionPoints": 0,
             "userId": 2,
             "categoryId": 1,
-            "createdAt": "2019-06-24 21:53:29"
+            "createdAt": "2019-06-24 21:53:29",
+            "history": "x xxx"
         },
         {
             "id": 3,
@@ -715,7 +717,8 @@ _http method_: **[GET]**
             "completionPoints": 0,
             "userId": 3,
             "categoryId": 1,
-            "createdAt": "2019-06-24 21:53:29"
+            "createdAt": "2019-06-24 21:53:29",
+            "history": "x xxx"
         }
     ]
   }
@@ -984,11 +987,15 @@ _http method_: **[PUT]**
 
 #### Body
 
-| name               | type    | required | description |
-| ------------------ | ------- | -------- | ----------- |
-| `habitTitle`       | String  | Yes      |             |
-| `completed`        | Boolean | No       |             |
-| `completionPoints` | Integer | No       |             |
+| name               | type      | required | description |
+| ------------------ | --------- | -------- | ----------- |
+| `habitTitle`       | String    | Yes      |             |
+| `categoryId`       | Integer   | Yes      |             |
+| `userId`           | Integer   | Yes      |             |
+| `completed`        | Boolean   | No       |             |
+| `completionPoints` | Integer   | No       |             |
+| `createdAt`        | TimeStamp | No       |             |
+| `history`          | Text      | No       |             |
 
 #### Example
 
@@ -1014,7 +1021,8 @@ _http method_: **[PUT]**
         "completionPoints": 0,
         "userId": 1,
         "categoryId": 1,
-        "createdAt": "2019-06-24 21:53:29"
+        "createdAt": "2019-06-24 21:53:29",
+        "history": "x xxx xx"
     }
 }
 ```
