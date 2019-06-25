@@ -20,7 +20,7 @@ exports.up = function(knex, Promise) {
 
     tbl.timestamp('createdAt').defaultTo(knex.fn.now());
 
-    tbl.text('history')
+    tbl.text('history').default("")
   });
 };
 
