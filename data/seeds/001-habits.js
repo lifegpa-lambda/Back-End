@@ -59,6 +59,6 @@ exports.seed = function(knex, Promise) {
           createdAt: knex.fn.now(),
           history: "x x x xxxx"
         }
-      ]);
+      ]).returning('*')
     });
 };

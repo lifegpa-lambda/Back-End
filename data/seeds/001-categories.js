@@ -20,6 +20,6 @@ exports.seed = function(knex, Promise) {
           color: 'green',
           userId: 1
         }
-      ]);
+      ]).returning('*')
     });
 };

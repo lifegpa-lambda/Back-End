@@ -364,7 +364,8 @@ _http method_: **[POST]**
 | `userId`           | Integer | Yes      | No need to assign! Derived from user making request |
 | `completed`        | Boolean | No       |                                                     |
 | `completionPoints` | Integer | No       |                                                     |
-| `created_at`       | String  | No       |                                                     |
+| `createdAt`        | String  | No       |                                                     |
+| `history`          | String  | No       |                                                     |
 
 #### Example
 
@@ -472,7 +473,8 @@ _http method_: **[GET]**
             "completionPoints": 0,
             "userId": 1,
             "categoryId": 1,
-            "createdAt": "2019-06-24 21:53:29"
+            "createdAt": "2019-06-24 21:53:29",
+            "history": "x x x xxxx"
         },
         {
             "id": 5,
@@ -481,7 +483,8 @@ _http method_: **[GET]**
             "completionPoints": 0,
             "userId": 1,
             "categoryId": 1,
-            "createdAt": "2019-06-24 21:53:29"
+            "createdAt": "2019-06-24 21:53:29",
+            "history": "x x x xxxx"
         },
         {
             "id": 6,
@@ -490,7 +493,8 @@ _http method_: **[GET]**
             "completionPoints": 0,
             "userId": 1,
             "categoryId": 1,
-            "createdAt": "2019-06-24 21:53:29"
+            "createdAt": "2019-06-24 21:53:29",
+            "history": "x x x xxxx"
         }
     ]
   }
@@ -568,7 +572,8 @@ _http method_: **[GET]**
     "completionPoints": 0,
     "userId": 1,
     "categoryId": 1,
-    "created_at": "2019-03-12 10:07:27"
+    "created_at": "2019-03-12 10:07:27",
+    "history": "x x x xxxx"
 }
 ```
 
