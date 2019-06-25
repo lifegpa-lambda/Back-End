@@ -16,7 +16,8 @@ function findUsers() {
 function findUserById(id) {
   return db('users')
     .where({ id })
-    .first();
+    .first()
+    .returning('*');
 }
 
 function findByUserCreds(filter) {
