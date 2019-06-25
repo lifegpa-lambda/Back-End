@@ -42,7 +42,8 @@ async function addHabit(team) {
 function updateHabit(id, changes) {
   return db('habits')
   .where({ id })
-  .update(changes, '*');
+  .update(changes, '*')
+  .returning('id')
 }
 
 function removeHabit(id) {
