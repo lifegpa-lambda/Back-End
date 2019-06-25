@@ -39,7 +39,7 @@ router.post('/', authenticate, validateHabitPost,  (req, res) => {
     res.status(201).json(habit)
   })
   .catch(err => {
-    res.status(500).json({message: "Error could not post habit"})
+    res.status(500).json({message: "Error could not post habit", error: err.message})
   })
 })
 
