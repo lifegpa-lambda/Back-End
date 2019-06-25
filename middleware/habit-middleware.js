@@ -53,10 +53,7 @@ function validateHabitPost(req, res, next) {
       if(habitTitle && categoryId) {
         req.post = {
           ...req.body,
-          userId: res.decodedToken.subject,
-          completed: false,
-          completionPoints: 0,
-          createdAt: knex.fn.now()
+          userId: res.decodedToken.subject
         }
         next()
       } else {
