@@ -19,6 +19,8 @@ exports.up = function(knex, Promise) {
       .inTable('categories');
 
     tbl.timestamp('createdAt').defaultTo(knex.fn.now());
+
+    tbl.text('history')
   });
 };
 
