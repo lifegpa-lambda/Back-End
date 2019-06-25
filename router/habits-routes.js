@@ -4,7 +4,7 @@ const { authenticate } = require('../auth/authenticate')
 const {
   validateHabitId,
   validateHabitChanges,
-  validateHabitPost } = require('../middleware/category-middleware.js')
+  validateHabitPost } = require('../middleware/habit-middleware.js')
 
 const Habits = require('../models/habit-models.js')
 
