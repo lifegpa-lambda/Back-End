@@ -21,7 +21,7 @@ router.get('/', authenticate, (req, res) => {
     })
 })
 
-router.get('/habits/:id', authenticate, validateHabitId, (req, res) => {
+router.get('/:id', authenticate, validateHabitId, (req, res) => {
   const { habitId } = req
 
   Habits.findHabitById(habitId)
