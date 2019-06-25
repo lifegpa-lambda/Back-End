@@ -33,7 +33,7 @@ router.get('/habits/:id', authenticate, validateHabitsId, (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', authenticate, validateHabitPost,  (req, res) => {
   Habits.addHabit(req.post)
   .then(habit => {
     res.status(201).json(habit)
