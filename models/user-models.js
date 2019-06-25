@@ -17,7 +17,6 @@ function findUserById(id) {
   return db('users')
     .where({ id })
     .first()
-    .returning('*');
 }
 
 function findByUserCreds(filter) {
