@@ -33,8 +33,8 @@ function findHabitByCategory(id) {
     .first();
 }
 
-async function addHabit(team) {
-  const [id] = await db('habits').insert(team).returning('id');
+async function addHabit(habit) {
+  const [id] = await db('habits').insert(habit).returning('id');
 
   return findHabitById(id);
 }
