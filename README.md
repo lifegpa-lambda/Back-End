@@ -389,7 +389,8 @@ _http method_: **[POST]**
     "completionPoints": 0,
     "userId": 2,
     "categoryId": 1,
-    "created_at": "2019-03-13 20:47:27"
+    "created_at": "2019-03-13 20:47:27",
+    "history": "x x x xxxx"
   }
 ```
 
