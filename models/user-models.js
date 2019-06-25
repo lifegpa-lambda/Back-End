@@ -20,7 +20,7 @@ function findUserById(id) {
 }
 
 function findByUserCreds(filter) {
-  return db('users').where(filter);
+  return db('users').where(filter).returning('*')
 }
 
 async function addUser(user) {
@@ -32,7 +32,8 @@ async function addUser(user) {
 function updateUser(id, changes) {
   return db('users')
   .where({ id })
-  .update(changes, '*');
+  .update(changes, '*')
+  .returning('id')
 }
 
 function removeUser(id) {

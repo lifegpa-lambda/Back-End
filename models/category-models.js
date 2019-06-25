@@ -40,7 +40,8 @@ async function addCategory(category) {
 function updateCategory(id, changes) {
   return db('categories')
   .where({ id })
-  .update(changes, '*');
+  .update(changes, '*')
+  .returning('id')
 }
 
 function removeCategory(id) {
