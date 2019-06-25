@@ -21,75 +21,53 @@ router.get('/', authenticate, (req, res) => {
     })
 })
 
-// router.get('/habits/:id', authenticate, validateCategoryId, (req, res) => {
-//   const { categoryId } = req
-//
-//   Categories.findCategoryById(categoryId)
-//     .then(category => {
-//       Categories.findCategoryByHabit(categoryId)
-//       .then(habits => {
-//           const categoryObj = {
-//             ...category,
-//             habits: habits
-//           }
-//           res.status(200).json(catergoryObj)
-//       })
-//       .catch(err => {
-//         res.status(500).json({message: `Error Finding Habits`})
-//       })
-//     })
-//     .catch(err => {
-//       res.status(500).json({message: "Error finding Category"})
-//     })
-// })
-//
-// router.get('/:id', authenticate, validateCategoryId, (req, res) => {
-//   const { categoryId } = req
-//
-//   Categories.findCategoryById(categoryId)
-//     .then(category => {
-//       res.status(200).json(category)
-//     })
-//     .catch(err => {
-//       res.status(500).json({message: "Error finding Category"})
-//     })
-// })
-//
-// router.post('/', (req, res) => {
-//   Categories.addCategory(req.post)
-//   .then(category => {
-//     res.status(201).json(category)
-//   })
-//   .catch(err => {
-//     res.status(500).json({message: "Error could not post category"})
-//   })
-// })
-//
-// router.put('/:id', authenticate, validateCategoryId, validateCategoryChanges, (req, res) => {
-//   const { categoryId, changes } = req
-//
-//   Categories.updateCategory(categoryId, changes)
-//     .then(updated => {
-//       res.status(201).json({
-//         message: "Category has successfully updated",
-//         category: changes
-//       })
-//     })
-//     .catch(err => {
-//       res.status(500).json({message: "Error updating Category"})
-//     })
-// })
-//
-// router.delete('/:id', authenticate, validateCategoryId, (req, res) => {
-//   const { categoryId } = req
-//
-//   Categories.removeCategory(categoryId)
-//     .then(category => {
-//       res.status(200).json({message: `The category was successfully deleted`})
-//     })
-//     .catch(err => {
-//       res.status(500).json({message: "Error deleting Category"})
-//     })
-// })
+router.get('/habits/:id', authenticate, validateHabitsId, (req, res) => {
+  const { habitId } = req
+
+  Habits.findHabitById(habitId)
+    .then(habit => {
+      res.status(200).json(habit)
+    })
+    .catch(err => {
+      res.status(500).json({message: "Error finding Habit"})
+    })
+})
+
+router.post('/', (req, res) => {
+  Habits.addHabit(req.post)
+  .then(habit => {
+    res.status(201).json(habit)
+  })
+  .catch(err => {
+    res.status(500).json({message: "Error could not post habit"})
+  })
+})
+
+router.put('/:id', authenticate, validateHabitId, validateHabitChanges, (req, res) => {
+  const { habitId, changes } = req
+
+  Habits.updateHabit(habitId, changes)
+    .then(updated => {
+      res.status(201).json({
+        message: "Habit has successfully updated",
+        habit: changes
+      })
+    })
+    .catch(err => {
+      res.status(500).json({message: "Error updating Habit"})
+    })
+})
+
+router.delete('/:id', authenticate, validateHabitId, (req, res) => {
+  const { habitId } = req
+
+  Habits.removeHabit(habitId)
+    .then(habit => {
+      res.status(200).json({message: `The habit was successfully deleted`})
+    })
+    .catch(err => {
+      res.status(500).json({message: "Error deleting Habit"})
+    })
+})
 
 module.exports = router

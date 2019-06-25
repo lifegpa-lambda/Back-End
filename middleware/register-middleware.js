@@ -19,7 +19,8 @@ function validateUserInputs(req, res, next) {
 
   if(username && password && fullname && email && userImgUrl) {
     req.user = {
-      ...req.body
+      ...req.body,
+      userImgUrl: userImgUrl
     }
     next()
   }
