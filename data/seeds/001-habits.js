@@ -11,7 +11,8 @@ exports.seed = function(knex, Promise) {
           userId: 1,
           completed: false,
           completionPoints: 0,
-          createdAt: knex.fn.now()
+          createdAt: knex.fn.now(),
+          history: "x x x xxxx"
         },
         {
           habitTitle: '8 hours of sleep',
@@ -19,7 +20,8 @@ exports.seed = function(knex, Promise) {
           userId: 2,
           completed: false,
           completionPoints: 0,
-          createdAt: knex.fn.now()
+          createdAt: knex.fn.now(),
+          history: "x x x xxxx"
         },
         {
           habitTitle: 'Drink a gallon of water',
@@ -27,7 +29,8 @@ exports.seed = function(knex, Promise) {
           userId: 3,
           completed: false,
           completionPoints: 0,
-          createdAt: knex.fn.now()
+          createdAt: knex.fn.now(),
+          history: "x x x xxxx"
         },
         {
           habitTitle: 'Run',
@@ -35,7 +38,8 @@ exports.seed = function(knex, Promise) {
           userId: 2,
           completed: false,
           completionPoints: 0,
-          createdAt: knex.fn.now()
+          createdAt: knex.fn.now(),
+          history: "x x x xxxx"
         },
         {
           habitTitle: 'Got to bed earlier',
@@ -43,7 +47,8 @@ exports.seed = function(knex, Promise) {
           userId: 1,
           completed: false,
           completionPoints: 0,
-          createdAt: knex.fn.now()
+          createdAt: knex.fn.now(),
+          history: "x x x xxxx"
         },
         {
           habitTitle: 'No sugar',
@@ -51,7 +56,8 @@ exports.seed = function(knex, Promise) {
           userId: 1,
           completed: false,
           completionPoints: 0,
-          createdAt: knex.fn.now()
+          createdAt: knex.fn.now(),
+          history: "x x x xxxx"
         }
       ]);
     });
