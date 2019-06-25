@@ -51,7 +51,7 @@ function validateHabitPost(req, res, next) {
       if(habitTitle && categoryId) {
         req.post = {
           ...req.body,
-          userId: res.decoded.subject
+          userId: req.decoded.subject
         }
         next()
       } else {
