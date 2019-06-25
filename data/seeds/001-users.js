@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
         {
           username: 'zach',
           password: bcrypt.hashSync('1234', 10),
-          fullName: 'Zach Christy',
+          fullname: 'Zach Christy',
           email: 'zchristy44@gmail.com',
           userImgUrl:
             'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
@@ -16,7 +16,7 @@ exports.seed = function(knex, Promise) {
           username: 'bean',
           password:
           bcrypt.hashSync('1234', 10),
-          fullName: 'Rowan Atkinson',
+          fullname: 'Rowan Atkinson',
           email: 'mrbean@gmail.com',
           userImgUrl:
             'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
@@ -25,7 +25,7 @@ exports.seed = function(knex, Promise) {
           username: 'inspector',
           password:
           bcrypt.hashSync('1234', 10),
-          fullName: 'Jacques Clouseau',
+          fullname: 'Jacques Clouseau',
           email: 'inspector@gmail.com',
           userImgUrl:
             'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
