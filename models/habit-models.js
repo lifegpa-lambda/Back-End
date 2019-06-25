@@ -34,7 +34,7 @@ function findHabitByCategory(id) {
 }
 
 async function addHabit(team) {
-  const [id] = await db('habits').insert(team);
+  const [id] = await db('habits').insert(team).returning('id');
 
   return findHabitById(id);
 }
