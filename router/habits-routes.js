@@ -48,10 +48,16 @@ router.put('/:id', authenticate, validateHabitId, validateHabitChanges, (req, re
 
   Habits.updateHabit(habitId, changes)
     .then(updated => {
-      res.status(201).json({
-        message: "Habit has successfully updated",
-        habit: changes
-      })
+      Habits.findHabitById(habitId)
+        .then(habit => {
+          res.status(201).json({
+            message: "Habit has successfully updated",
+            habit: habit
+          })
+        })
+        .catch(err => {
+          res.status(500).json({message: "Error finding Habit"})
+        })
     })
     .catch(err => {
       res.status(500).json({message: "Error updating Habit"})

@@ -23,7 +23,7 @@ router.post('/register', validateUserInputs, (req, res) => {
       });
     })
     .catch(error => {
-      res.status(500).json({message: 'Error registering User.'});
+      res.status(400).json({message: 'Error registering User.'});
     });
 })
 
@@ -46,7 +46,7 @@ router.post('/login', validateLoginCreds, (req, res) => {
       }
     })
     .catch(error => {
-      res.status(500).json({message: "Error Loging in User", error: error.message});
+      res.status(400).json({message: "Error Loging in User"});
     });
 })
 
