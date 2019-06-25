@@ -45,12 +45,13 @@ function validateCategoryChanges(req, res, next) {
 }
 
 function validateCategoryPost(req, res, next) {
-  const { categoryTitle, color, userId } = req.body
+  const { categoryTitle, color } = req.body
 
     if(Object.keys(req.body).length) {
-      if(categoryTitle && color && userId) {
+      if(categoryTitle && color) {
         req.post = {
-          ...req.body
+          ...req.body,
+          userId: req.decoded.subject
         }
         next()
       } else {
