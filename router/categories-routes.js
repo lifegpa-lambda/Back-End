@@ -32,7 +32,7 @@ router.get('/habits/:id', authenticate, validateCategoryId, (req, res) => {
             ...category,
             habits: habits
           }
-          res.status(200).json(catergoryObj)
+          res.status(200).json(categoryObj)
       })
       .catch(err => {
         res.status(500).json({message: `Error Finding Habits`})
@@ -61,7 +61,7 @@ router.post('/', authenticate, validateCategoryPost, (req, res) => {
     res.status(201).json(category)
   })
   .catch(err => {
-    res.status(500).json({message: "Error could not post category", error: err.message})
+    res.status(500).json({message: "Error could not post category"})
   })
 })
 
@@ -70,10 +70,16 @@ router.put('/:id', authenticate, validateCategoryId, validateCategoryChanges, (r
 
   Categories.updateCategory(categoryId, changes)
     .then(updated => {
-      res.status(201).json({
-        message: "Category has successfully updated",
-        category: changes
-      })
+      Categories.findCategoryById(categoryId)
+        .then(category => {
+          res.status(201).json({
+            message: "Category has successfully updated",
+            category: category
+          })
+        })
+        .catch(err => {
+          res.status(500).json({message: "Error finding Category"})
+        })
     })
     .catch(err => {
       res.status(500).json({message: "Error updating Category"})
