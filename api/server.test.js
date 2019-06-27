@@ -33,10 +33,11 @@ const {
   removeAllHabitsByUser } = require('../models/habit-models.js')
 
 describe('All Routes', () => {
-  beforeAll(async () => {
+  afterAll(async () => {
     await db('users').truncate()
     await db('categories').truncate()
     await db('habits').truncate()
+    console.log("server truncate")
   })
 
   let token = ''
@@ -67,7 +68,7 @@ describe('All Routes', () => {
           })
 
           const user2 = {
-            username: 'zach',
+            username: 'zachc4',
             fullname: 'Zach Christy',
             password: '1234',
             email: 'zchristy44@gmail.com',
@@ -565,7 +566,6 @@ describe('All Routes', () => {
     describe('DELETE /api/users/:id', () => {
 
       it('responds with 200 OK', async () => {
-        const id = 1
 
         await supertest(server)
           .delete(`/api/users/${regUserId}`)
@@ -576,7 +576,7 @@ describe('All Routes', () => {
       it('responds with delete message', async () => {
 
         await supertest(server)
-        .delete(`/api/users/2`)
+        .delete(`/api/users/3`)
         .set('authorization', token)
         .then(res => {
           expect(res.body).toEqual({message: "The user was successfully deleted"})
