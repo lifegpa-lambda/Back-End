@@ -59,7 +59,6 @@ router.get('/habits/:id', authenticate, validateUserId, (req, res) => {
 
   Users.findUserById(userId)
     .then(user => {
-      console.log(user)
       Habits.findHabitByUser(userId)
         .then(habits => {
           const userObj = {

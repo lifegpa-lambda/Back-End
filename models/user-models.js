@@ -20,7 +20,7 @@ function findUserById(id) {
 }
 
 function findByUserCreds(filter) {
-  return db('users').where(filter).returning('*')
+  return db('users').where(filter).first().returning('*')
 }
 
 async function addUser(user) {
