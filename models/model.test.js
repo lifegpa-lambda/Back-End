@@ -34,6 +34,10 @@ describe('All models', () => {
     await db('habits').truncate()
   })
 
+  it('is process.env.DB_ENV is pointing to testing', () => {
+    expect(process.env.DB_ENV).toBe('testing')
+  })
+
   describe('users model', () => {
 
       describe('addUser()', () => {
