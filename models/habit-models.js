@@ -24,6 +24,7 @@ function findHabitById(id) {
 function findHabitByUser(id) {
   return db('habits')
     .where({ userId: id })
+    .orderBy('id')
 }
 
 function findHabitByCategory(id) {
