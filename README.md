@@ -23,7 +23,7 @@ _http method_: **[POST]**
 | name         | type   | required | description    |
 | ------------ | ------ | -------- | -------------- |
 | `username`   | String | Yes      | Must be unique |
-| `fullName`   | String | Yes      |                |
+| `fullname`   | String | Yes      |                |
 | `password`   | String | Yes      |                |
 | `email`      | String | No       |                |
 | `userImgUrl` | String | No       |                |
@@ -34,7 +34,7 @@ _http method_: **[POST]**
   {
     "username": "zach",
     "password": "1234",
-    "fullName": "zach christy",
+    "fullname": "zach christy",
     "email": "zchristy44@gmail.com",
     "userImgUrl": "image.jpg"
   }
